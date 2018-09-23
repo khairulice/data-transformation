@@ -1,0 +1,55 @@
+<div [@routerTransition]>    
+    <div class="row">
+        <div class="col col-sm-6">
+            <div class="card mb-3">                
+                <div class="card-body text-center">
+                    <span class="stat gain">Loss/Gain <br/>{{((currentValue-netWorth)*100/currentValue) | currency: '$': true: '1.1-2'}}%</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col col-sm-6">
+            <div class="card mb-3">               
+                <div class="card-body text-center">
+                    <span class="stat">Loss/Gain Amount <br/> {{(currentValue-netWorth) | currency: '$': true: '1.1-2'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">        
+            <div class="col col-sm-6">
+                <div class="card mb-3">               
+                    <div class="card-body text-center">
+                         <span class="stat">  Net Worth <br/> {{netWorth | currency}}</span>  
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col col-sm-6">
+                <div class="card mb-3">                
+                    <div class="card-body text-center">
+                          <span class="stat"> Current Value <br/> {{currentValue | currency}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="row">        
+        <div class="col col-sm-6">
+            <div class="card mb-3">               
+                <div class="card-body text-center">
+                     <span class="stat">  Last Sale <br/> {{lastSale | date}}</span>  
+                </div>
+               
+            </div>
+        </div>
+        <div class="col col-sm-6">
+            <div class="card mb-3">                
+                <div class="card-body text-center">
+                      <span class="stat"> Last Buy <br/> {{lastBuy | date}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

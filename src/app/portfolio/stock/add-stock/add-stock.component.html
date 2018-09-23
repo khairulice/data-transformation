@@ -1,0 +1,46 @@
+
+<div class="add-stock-page">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">            
+            <h1>Add your stock</h1>    
+            <form [formGroup]="addStockForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">      
+                  <select formControlName="companyName" [(ngModel)]="selectedCountry"class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.companyName.errors }" >                    
+                      <option [ngValue]="undefined" disabled  selected> Please select one option </option>
+                    <option *ngFor="let c of companies" [ngValue]="c.companyName">{{c.companyName}}</option>                    
+                  </select>              
+                    <!-- <input type="text" formControlName="companyName" placeholder="Company Name" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.companyName.errors }" /> -->
+                    <div *ngIf="submitted && f.companyName.errors" class="invalid-feedback">
+                        <div *ngIf="f.companyName.errors.required">Company Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">                    
+                    <input type="text" formControlName="purchaseDate" placeholder="yyyy-mm-dd" class="form-control datepicker input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.purchaseDate.errors }" ngbDatepicker #d="ngbDatepicker">
+                    <button class="input-group-addon" (click)="d.toggle()" type="button">                        
+                        <span class="fa fa-calendar"></span>
+                    </button>
+                    <!-- <input type="text" formControlName="purchaseDate" placeholder="Purchase Date" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.purchaseDate.errors }" /> -->
+                    <div *ngIf="submitted && f.purchaseDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.purchaseDate.errors.required">Purchase Date is required</div>
+                    </div>
+                </div>
+                <div class="form-group">                    
+                    <input type="text" formControlName="quantity" placeholder="Quantity" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }" />
+                    <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
+                        <div *ngIf="f.quantity.errors.required">Quantity is required</div>
+                    </div>
+                </div>
+                <div class="form-group">                   
+                    <input type="text" formControlName="purchaseRate" placeholder="Purchase Rate" class="form-control input-underline input-lg" [ngClass]="{ 'is-invalid': submitted && f.purchaseRate.errors }" />
+                    <div *ngIf="submitted && f.purchaseRate.errors" class="invalid-feedback">
+                        <div *ngIf="f.purchaseRate.errors.required">Purchase Rate is required</div>                        
+                    </div>
+                </div>
+                <div class="form-group">
+                        <button [disabled]="loading" class="btn rounded-btn">Save</button>                  
+                    <a class="btn rounded-btn" [routerLink]="['/login']"> Cancel </a>
+                </div>
+            </form>            
+        </div>
+    </div>
+</div>
