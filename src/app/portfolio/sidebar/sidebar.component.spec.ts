@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { TranslateModule } from '@ngx-translate/core'
 
 import { SidebarComponent } from './sidebar.component'
-import { LayoutModule } from '../../layout.module'
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent
@@ -11,8 +10,7 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        LayoutModule,
+      imports: [        
         RouterTestingModule,
         TranslateModule.forRoot(),
       ],
