@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioComponent implements OnInit {
 
-  constructor() { }
+  collapedSideBar: boolean;
 
-  ngOnInit() {
-  }
+    constructor() {}
+
+    ngOnInit() {}
+
+    receiveCollapsed($event) {
+        this.collapedSideBar = $event;
+    }   
 
 }

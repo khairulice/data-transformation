@@ -7,10 +7,10 @@ import './_content/modal.less';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-    constructor() {
-    }
+export class AppComponent implements OnInit {   
 
-    ngOnInit() {
-    }
+    constructor() {}
+
+    ngOnInit() {}
+   
 }
