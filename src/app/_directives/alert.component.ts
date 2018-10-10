@@ -23,4 +23,8 @@ export class AlertComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
+
+    removeAlert() {
+        this.message=null;
+    }
 }

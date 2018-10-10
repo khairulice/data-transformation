@@ -8,10 +8,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService } from './_services';
+import { AuthenticationService, UserService } from './_services';
 
 
 // AoT requires an exported function for factories
@@ -42,11 +41,10 @@ export const createTranslateLoader = (http: HttpClient) => {
     ],
     declarations: [
         AppComponent, 
-        AlertComponent, 
+       
     ],
     providers: [
-        AuthGuard,
-        AlertService,
+        AuthGuard,        
         AuthenticationService,
         UserService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

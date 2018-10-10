@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { ModalComponent } from '../_directives';
-import { ModalService, StockService } from '../_services';
+import { ModalService, StockService, AlertService as AlertService } from '../_services';
 
 import { ChartsModule as Ng2Charts } from 'ng2-charts';
 
@@ -20,6 +20,8 @@ import { StockComponent } from './stock/stock.component';
 import { AddStockComponent } from './stock/add-stock/add-stock.component';
 import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import { AnalyzeComponent } from './analyze/analyze.component';
+
+import { AlertComponent } from '../_directives';
 
 @NgModule({
     imports: [
@@ -41,11 +43,13 @@ import { AnalyzeComponent } from './analyze/analyze.component';
         StockComponent,
         ModalComponent,
         AddStockComponent,
-        AnalyzeComponent
+        AnalyzeComponent,
+        AlertComponent        
     ],
     providers: [
         ModalService,
         StockService,
+        AlertService,
         {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}        
     ],
 })

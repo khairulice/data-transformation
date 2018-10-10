@@ -29,17 +29,17 @@
                 | currency: '$': true: '1.1-2'}}%</td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="8" class="text-right"><strong> Total Purchage Amount: {{totalamtpurchase| currency: '$': true: '1.1-2'}}<br />
+                Total Market Amount: {{totalamtmarket| currency: '$': true: '1.1-2'}} <br />
+                <span [ngClass]="{'loss':totalamtmarket - totalamtpurchase <0,'gain':totalamtmarket - totalamtpurchase>=0}">
+                  Loss/Gain Amount: {{totalamtmarket - totalamtpurchase| currency: '$': true: '1.1-2'}}</span>
+              </strong></td>              
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
-  </div>
-  <div class="row text-right">
-    <div class="col-12">
-      <strong> Total Purchage Amount: {{totalamtpurchase| currency: '$': true: '1.1-2'}}<br />
-        Total Market Amount: {{totalamtmarket| currency: '$': true: '1.1-2'}} <br />
-        <span [ngClass]="{'loss':totalamtmarket - totalamtpurchase <0,'gain':totalamtmarket - totalamtpurchase>=0}">
-          Loss/Gain Amount: {{totalamtmarket - totalamtpurchase| currency: '$': true: '1.1-2'}}</span>
-      </strong>
-    </div>
-  </div>
+  </div> 
 </div>
