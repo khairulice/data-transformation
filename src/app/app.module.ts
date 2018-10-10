@@ -13,6 +13,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AuthenticationService, UserService } from './_services';
 
 
+
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
     /* for development
@@ -40,7 +41,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         AppRoutingModule
     ],
     declarations: [
-        AppComponent, 
+        AppComponent,       
        
     ],
     providers: [

@@ -9,19 +9,18 @@ import { PortfolioComponent } from './portfolio.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
 import { ModalComponent } from '../_directives';
 import { ModalService, StockService, AlertService as AlertService } from '../_services';
-
 import { ChartsModule as Ng2Charts } from 'ng2-charts';
-
 import { PageHeaderModule } from '../shared';
 import { StockComponent } from './stock/stock.component';
 import { AddStockComponent } from './stock/add-stock/add-stock.component';
 import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from '@ng-bootstrap/ng-bootstrap';
 import { AnalyzeComponent } from './analyze/analyze.component';
-
 import { AlertComponent } from '../_directives';
+import { ProfileComponent } from './profile/profile.component';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 @NgModule({
     imports: [
@@ -33,7 +32,8 @@ import { AlertComponent } from '../_directives';
         NgbDropdownModule.forRoot(),
         NgbModule.forRoot(),
         PageHeaderModule,
-        Ng2Charts
+        Ng2Charts,
+        FileUploadModule
     ],
     declarations: [
         PortfolioComponent, 
@@ -44,7 +44,8 @@ import { AlertComponent } from '../_directives';
         ModalComponent,
         AddStockComponent,
         AnalyzeComponent,
-        AlertComponent        
+        AlertComponent,
+        ProfileComponent        
     ],
     providers: [
         ModalService,
