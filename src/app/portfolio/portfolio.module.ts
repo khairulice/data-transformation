@@ -20,6 +20,9 @@ import { AnalyzeComponent } from './analyze/analyze.component';
 import { AlertComponent } from '../_directives';
 import { ProfileComponent } from './profile/profile.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import {NgRedux, NgReduxModule} from '@angular-redux/store';
+// import {store} from "redux";
+// import {IAppState} from "./redux/interfaces/state";
 
 
 @NgModule({
@@ -33,7 +36,8 @@ import { FileUploadModule } from 'ng2-file-upload';
         NgbModule.forRoot(),
         PageHeaderModule,
         Ng2Charts,
-        FileUploadModule
+        FileUploadModule,
+        NgReduxModule
     ],
     declarations: [
         PortfolioComponent, 
@@ -54,4 +58,8 @@ import { FileUploadModule } from 'ng2-file-upload';
         {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}        
     ],
 })
-export class PortfolioModule { }
+export class PortfolioModule {
+    constructor(private ngRedux: NgRedux<IAppState>) {
+        ngRedux.provideStore(store);
+    }
+ }

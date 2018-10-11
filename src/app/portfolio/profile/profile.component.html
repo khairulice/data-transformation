@@ -1,19 +1,21 @@
 <h1>
-    {{title}}
-  
-  </h1>
-  
-  <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
-  
-  <button type="button" class="btn btn-success btn-s"
-                          (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                   Upload with ng-2 file uploader
-                  </button>
-  
-  
-  <input id="photo" type="file" />
-  
-  <button type="button" class="btn btn-success btn-s" (click)="upload()">
-  Upload with method 2
-                  </button>
-  
+  Your profile
+</h1>
+<h3>Photo</h3>
+<img src="{{imageSrc}}" height="120px" width="90px"/>
+<br/>
+<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+<br/>
+<button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+  Upload
+</button>
+<button type="button" class="btn btn-danger btn-s"
+                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                </button>
+
+<!-- <input id="photo" type="file" /><br/>
+<button type="button" class="btn btn-success btn-s" (click)="upload()">
+  Upload
+</button> -->
+

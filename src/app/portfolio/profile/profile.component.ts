@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
-
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 const URL = 'http://localhost:4000/api';
@@ -11,13 +10,14 @@ const URL = 'http://localhost:4000/api';
 })
 export class ProfileComponent implements OnInit {
   public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
-  title = 'app works!';
+  public imageSrc=null;
 
   ngOnInit() {
 	 this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
 	 this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
             console.log("ImageUpload:uploaded:", item, status, response);
-            alert(response);
+            //alert(response);
+            this.imageSrc=`http://localhost:4000/${response.split('\\')[1]}`;
         };
 	}
 
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
 	
 	upload() {
         let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
-        console.log("iam+ "+inputEl);
+        //console.log("iam+ "+inputEl);
         let fileCount: number = inputEl.files.length;
         let formData = new FormData();
         if (fileCount > 0) { // a file was selected
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
             this.http
                 .post(URL, formData).pipe((res:any) => res).subscribe(
                     (success) => {
-                     alert(success);
+                     console.log(success);
                   },
                     (error) => alert(error)
                 );
