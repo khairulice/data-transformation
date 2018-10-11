@@ -20,9 +20,8 @@ import { AnalyzeComponent } from './analyze/analyze.component';
 import { AlertComponent } from '../_directives';
 import { ProfileComponent } from './profile/profile.component';
 import { FileUploadModule } from 'ng2-file-upload';
-import {NgRedux, NgReduxModule} from '@angular-redux/store';
-// import {store} from "redux";
-// import {IAppState} from "./redux/interfaces/state";
+import { NgRedux, NgReduxModule} from '@angular-redux/store';
+import { IAppState, rootReducer, INITIAL_STATE } from '../_redux/store';
 
 
 @NgModule({
@@ -59,7 +58,7 @@ import {NgRedux, NgReduxModule} from '@angular-redux/store';
     ],
 })
 export class PortfolioModule {
-    constructor(private ngRedux: NgRedux<IAppState>) {
-        ngRedux.provideStore(store);
+    constructor (ngRedux: NgRedux<IAppState>) {
+        ngRedux.configureStore(rootReducer, INITIAL_STATE);
     }
  }

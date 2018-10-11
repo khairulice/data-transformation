@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from '../../_models';
 import { UserService } from '../../_services';
+import { NgRedux, select } from '@angular-redux/store';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
     currentUser: User;
     users: User[] = [];
-
+    @select() userName;
     
     constructor(private userService: UserService, private translate: TranslateService, public router: Router) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

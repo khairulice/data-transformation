@@ -1,6 +1,8 @@
 <h1>
-  Your profile
+  Your profile <span>{{userName | async}}</span>
 </h1>
+<h3>Edit Name</h3>
+<input type="text" id="userName" name="userName" (change)="onChange()"/>
 <h3>Photo</h3>
 <img src="{{imageSrc}}" height="120px" width="90px"/>
 <br/>
@@ -9,10 +11,6 @@
 <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
   Upload
 </button>
-<button type="button" class="btn btn-danger btn-s"
-                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                    <span class="glyphicon glyphicon-trash"></span> Remove all
-                </button>
 
 <!-- <input id="photo" type="file" /><br/>
 <button type="button" class="btn btn-success btn-s" (click)="upload()">

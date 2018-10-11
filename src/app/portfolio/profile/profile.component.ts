@@ -1,6 +1,9 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
+import { NgRedux, select } from '@angular-redux/store';
+import { IAppState } from '../../_redux/store';
+import { UPDATE_NAME } from '../../_redux/actions';
 const URL = 'http://localhost:4000/api';
 
 @Component({
@@ -11,6 +14,7 @@ const URL = 'http://localhost:4000/api';
 export class ProfileComponent implements OnInit {
   public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
   public imageSrc=null;
+  @select() userName;
 
   ngOnInit() {
 	 this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
@@ -21,8 +25,10 @@ export class ProfileComponent implements OnInit {
         };
 	}
 
-	constructor(private http: HttpClient, private el: ElementRef) {}
-	
+	constructor(private ngRedux: NgRedux<IAppState>, private http: HttpClient, private el: ElementRef) {}
+	onChange() {
+        this.ngRedux.dispatch({type: UPDATE_NAME, userName: this.el.nativeElement.querySelector('#userName').value});
+      }
 	upload() {
         let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
         //console.log("iam+ "+inputEl);
