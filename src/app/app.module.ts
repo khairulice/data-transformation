@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './_guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AuthenticationService, UserService } from './_services';
+import { environment } from '../environments/environment';
 
 
 
@@ -38,7 +39,8 @@ export const createTranslateLoader = (http: HttpClient) => {
                 deps: [HttpClient]
             }
         }),
-        AppRoutingModule
+        AppRoutingModule,
+        
     ],
     declarations: [
         AppComponent,       
@@ -50,6 +52,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         UserService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        
     ],
     bootstrap: [AppComponent]
 })

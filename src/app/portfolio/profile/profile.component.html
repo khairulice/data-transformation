@@ -6,11 +6,22 @@
 <h3>Photo</h3>
 <img src="{{imageSrc}}" height="120px" width="90px"/>
 <br/>
-<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+<input  #fileselctor type="file" name="photo" ng2FileSelect [uploader]="uploader" />
 <br/>
-<button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+<!-- <button type="button" class="btn btn-success btn-s" (click)="fileselctor.click()" (change)="uploader.uploadAll()">
   Upload
+</button> -->
+
+<button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+  Upload 2
 </button>
+
+<ul>
+  <li *ngFor="let product of products | async">
+      <pre>{{ product.Name }}</pre>
+  </li>
+</ul>
+
 
 <!-- <input id="photo" type="file" /><br/>
 <button type="button" class="btn btn-success btn-s" (click)="upload()">

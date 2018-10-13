@@ -4,6 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../_redux/store';
 import { UPDATE_NAME } from '../../_redux/actions';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+class Product {
+    constructor(public Name) { }
+}
+
+
 const URL = 'http://localhost:4000/api';
 
 @Component({
@@ -12,7 +20,8 @@ const URL = 'http://localhost:4000/api';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  public uploader:FileUploader = new FileUploader({url: URL, itemAlias: 'photo',authToken:`Bearer ${this.currentUser.token}`});
   public imageSrc=null;
   @select() userName;
 
@@ -25,7 +34,13 @@ export class ProfileComponent implements OnInit {
         };
 	}
 
-	constructor(private ngRedux: NgRedux<IAppState>, private http: HttpClient, private el: ElementRef) {}
+    public products: Observable<any[]>;
+    constructor(db: AngularFirestore, private ngRedux: NgRedux<IAppState>, private http: HttpClient, private el: ElementRef) {
+        this.products = db.collection('Product').valueChanges();
+    }
+    
+   
+
 	onChange() {
         this.ngRedux.dispatch({type: UPDATE_NAME, userName: this.el.nativeElement.querySelector('#userName').value});
       }

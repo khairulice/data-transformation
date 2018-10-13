@@ -22,6 +22,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgRedux, NgReduxModule} from '@angular-redux/store';
 import { IAppState, rootReducer, INITIAL_STATE } from '../_redux/store';
+import { environment } from '../../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 
 @NgModule({
@@ -36,7 +41,10 @@ import { IAppState, rootReducer, INITIAL_STATE } from '../_redux/store';
         PageHeaderModule,
         Ng2Charts,
         FileUploadModule,
-        NgReduxModule
+        NgReduxModule,
+        AngularFireModule.initializeApp(environment.firebase, 'vehicle-registration'),
+        AngularFireStorageModule
+       
     ],
     declarations: [
         PortfolioComponent, 
@@ -54,7 +62,8 @@ import { IAppState, rootReducer, INITIAL_STATE } from '../_redux/store';
         ModalService,
         StockService,
         AlertService,
-        {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}        
+        {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter},
+        AngularFirestore        
     ],
 })
 export class PortfolioModule {
