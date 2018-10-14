@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:4000',
   firebase : {
-    apiKey: "AIzaSyApnZVKy-1FuPVrPVOfVd9lsJwKGpby9GQ",
+    apiKey: "",
     authDomain: "vehicle-registration-19db3.firebaseapp.com",
     databaseURL: "https://vehicle-registration-19db3.firebaseio.com",
     projectId: "vehicle-registration-19db3",

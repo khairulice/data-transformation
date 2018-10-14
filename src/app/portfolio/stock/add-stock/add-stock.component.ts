@@ -47,7 +47,7 @@ export class AddStockComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  this.alertService.success('Stock added successful', true);
+                  this.alertService.success('Stock added successfully', true);
                   this.router.navigate(['/portfolio/stocks']);
               },
               error => {
